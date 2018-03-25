@@ -1,0 +1,51 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.x</groupId>
+	<artifactId>hello-kie-server</artifactId>
+	<packaging>kjar</packaging>
+	<version>1.0</version>
+	<name>hello-kie-server</name>
+
+	<properties>
+		<kieserver.username>admin</kieserver.username>
+		<kieserver.password>admin</kieserver.password>
+		<kieserver.hostname>localhost</kieserver.hostname>
+		<kieserver.port>8080</kieserver.port>
+		<kieserver.protocol>http</kieserver.protocol>
+		<kieserver.runtimeStrategy>SINGLETON</kieserver.runtimeStrategy>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.kie.server</groupId>
+				<artifactId>kie-server-maven-plugin</artifactId>
+				<version>7.5.0.Final</version>
+				<configuration>
+					<username>${kieserver.username}</username>
+					<password>${kieserver.password}</password>
+					<hostname>${kieserver.hostname}</hostname>
+					<port>${kieserver.port}</port>
+					<protocol>${kieserver.protocol}</protocol>
+					<runtimeStrategy>${kieserver.runtimeStrategy}</runtimeStrategy>
+					<KBase></KBase>
+					<KSession></KSession>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.kie</groupId>
+				<artifactId>kie-maven-plugin</artifactId>
+				<version>7.5.0.Final</version>
+				<extensions>true</extensions>
+			</plugin>
+		</plugins>
+	</build>
+	<distributionManagement>
+		<repository>
+			<id>kieserver-maven</id>
+			<url>http://localhost:8080/jbpm-console/maven2</url>
+		</repository>
+
+	</distributionManagement>
+</project>
